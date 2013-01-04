@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using TASP;
+
 /// TASP Source Code
 /// 2012-2013 Joey Miller (Shadow Yoshi), et. al
 /// 
@@ -67,11 +69,13 @@ namespace TASP
         /* TASP will draw itself here. */
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+
         }
 
         /* This is where TASP will run. */

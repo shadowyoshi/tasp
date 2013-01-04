@@ -15,15 +15,8 @@ namespace TASP
     class Object
     {
 
-        public enum ObjectType
-        {
-
-            Background,
-            BGO,
-            Block,
-            NPC
-
-        }
+        public int PositionX;
+        public int PositionY;
 
     }
 
