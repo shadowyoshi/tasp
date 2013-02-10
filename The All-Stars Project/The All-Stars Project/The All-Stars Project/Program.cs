@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -24,6 +25,11 @@ namespace TASP
 
         public GraphicsDeviceManager graphics;
         public SpriteBatch           spriteBatch;
+        public Stream                stream;
+        
+        public static Vector2 vector = new Vector2();
+
+        private Player Player1;
 
         public Program()
         {
@@ -31,6 +37,8 @@ namespace TASP
             graphics                           = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth  = 256;
             graphics.PreferredBackBufferHeight = 224;
+
+            this.IsMouseVisible                = true;
 
         }
 
@@ -64,6 +72,8 @@ namespace TASP
 
             base.Update(gameTime);
 
+            
+
         }
 
         /* TASP will draw itself here. */
@@ -75,6 +85,18 @@ namespace TASP
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+
+            Texture2D texture = new Texture2D(GraphicsDevice, 16, 16);
+
+            Player1 = new Player(texture, vector);
+
+            texture = _SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice);
+
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(texture, vector, Color.White);
+
+            spriteBatch.End();
 
         }
 

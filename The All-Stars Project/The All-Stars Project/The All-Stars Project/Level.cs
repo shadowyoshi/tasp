@@ -17,18 +17,14 @@ namespace TASP
     class Level
     {
 
+        public string levelname;
+        public string levelfilepath;
+
         /* Loads all background graphics and data */
-        public void LoadBG()
+        public void LoadBG(string config)
         {
 
-            //foreach (Object BGO in FILE)
-            //{
-
-            //    new Object();
-
-            //}
-
-            new Object();
+            //
 
         }
 
