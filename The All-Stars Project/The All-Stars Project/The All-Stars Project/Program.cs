@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using TASP;
+using TASP.Backend;
+using TASP.Base;
 
 /// TASP Source Code
 /// 2012-2013 Joey Miller (Shadow Yoshi), et. al
@@ -26,7 +28,7 @@ namespace TASP
         public GraphicsDeviceManager graphics;
         public SpriteBatch           spriteBatch;
         public Stream                stream;
-        
+
         public static Vector2 vector = new Vector2();
 
         private Player Player1;
@@ -72,7 +74,7 @@ namespace TASP
 
             base.Update(gameTime);
 
-            
+            Player1.HandleInput();
 
         }
 
@@ -90,12 +92,12 @@ namespace TASP
 
             Player1 = new Player(texture, vector);
 
-            texture = _SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice);
+            texture = SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice);
 
             spriteBatch.Begin();
-
             spriteBatch.Draw(texture, vector, Color.White);
-
+            //spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Color.White);
+            spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Player1.rectangle, Color.White);
             spriteBatch.End();
 
         }

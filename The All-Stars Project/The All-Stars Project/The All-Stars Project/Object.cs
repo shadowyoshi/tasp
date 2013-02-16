@@ -9,6 +9,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using TASP;
+using TASP.Backend;
+using TASP.Base;
+
 namespace TASP
 {
 
