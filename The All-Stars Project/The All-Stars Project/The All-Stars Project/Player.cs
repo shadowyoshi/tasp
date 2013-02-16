@@ -56,16 +56,12 @@ namespace TASP
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
             {
 
-                this.MoveLeft();
-
                 playerVelocity = new Vector2(-1, 0);
 
             }
 
             else if (Keyboard.GetState().IsKeyDown(Keys.Right) == true)
             {
-
-                this.MoveRight();
 
                 playerVelocity = new Vector2(1, 0);
 
@@ -79,20 +75,6 @@ namespace TASP
             }
 
             playerPosition += playerVelocity;
-
-        }
-
-        public void MoveLeft()
-        {
-
-            playerPosition.X += 1;
-
-        }
-
-        public void MoveRight()
-        {
-
-            playerPosition.X -= 1;
 
         }
 
