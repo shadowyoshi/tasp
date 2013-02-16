@@ -50,7 +50,7 @@ namespace TASP
 
         }
 
-        public void HandleInput() 
+        public void Update() 
         {
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
@@ -77,11 +77,6 @@ namespace TASP
                 playerVelocity = Vector2.Zero;
 
             }
-
-        }
-        
-        public void Update(GameTime gameTime)
-        {
 
             playerPosition += playerVelocity;
 

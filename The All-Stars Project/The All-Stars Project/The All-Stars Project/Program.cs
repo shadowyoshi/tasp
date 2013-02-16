@@ -50,6 +50,8 @@ namespace TASP
 
             base.Initialize();
 
+            Player1 = new Player(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), vector);
+
         }
 
         /* Looks like we should load all the content, right? */
@@ -74,7 +76,7 @@ namespace TASP
 
             base.Update(gameTime);
 
-            Player1.HandleInput();
+            Player1.Update();
 
         }
 
@@ -88,14 +90,7 @@ namespace TASP
 
             base.Draw(gameTime);
 
-            Texture2D texture = new Texture2D(GraphicsDevice, 16, 16);
-
-            Player1 = new Player(texture, vector);
-
-            texture = SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice);
-
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, vector, Color.White);
             //spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Color.White);
             spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Player1.rectangle, Color.White);
             spriteBatch.End();
