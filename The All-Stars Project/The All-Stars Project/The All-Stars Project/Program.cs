@@ -50,7 +50,7 @@ namespace TASP
 
             base.Initialize();
 
-            Spritesheet Player1Sprite = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), 0, 0);
+            Spritesheet Player1Sprite = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice));
 
             Player1 = new Player(Player1Sprite, vector);
 
@@ -91,8 +91,6 @@ namespace TASP
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
-
-            Spritesheet spritesheet = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), 0, 0);
 
             spriteBatch.Begin();
             //spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Color.White);

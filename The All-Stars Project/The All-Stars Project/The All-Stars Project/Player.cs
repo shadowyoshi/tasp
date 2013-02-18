@@ -20,6 +20,13 @@ namespace TASP
     class Player
     {
 
+        //public enum Player
+        //{
+
+        //    Mario
+
+        //}
+        
         public Spritesheet originSheet;
         
         public Texture2D playerSprite;
@@ -47,7 +54,7 @@ namespace TASP
         public Texture2D Draw(GraphicsDevice graphicsDevice)
         {
 
-            originSheet  = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice), 0, 0);
+            originSheet  = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice));
             playerSprite = new Texture2D(graphicsDevice, 16, 16);
 
             return playerSprite;

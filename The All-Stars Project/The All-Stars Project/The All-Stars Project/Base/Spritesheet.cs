@@ -22,18 +22,13 @@ namespace TASP.Base
 
         private Texture2D   originImage;
         private Texture2D[] frames;
-        
-        private int startX; // Starting X position
-        private int startY; // Starting Y position
 
         public Rectangle sheetPosition = new Rectangle();
 
-        public Spritesheet(Texture2D __originImage, int __startX, int __startY)
+        public Spritesheet(Texture2D __originImage)
         {
 
             originImage = __originImage;
-            startX      = __startX;
-            startY      = __startY;
 
         }
 
