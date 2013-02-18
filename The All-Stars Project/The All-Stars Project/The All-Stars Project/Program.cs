@@ -50,7 +50,9 @@ namespace TASP
 
             base.Initialize();
 
-            Player1 = new Player(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), vector);
+            Spritesheet Player1Sprite = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), 0, 0);
+
+            Player1 = new Player(Player1Sprite, vector);
 
         }
 
@@ -90,9 +92,11 @@ namespace TASP
 
             base.Draw(gameTime);
 
+            Spritesheet spritesheet = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice), 0, 0);
+
             spriteBatch.Begin();
             //spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Color.White);
-            spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Player1.rectangle, Color.White);
+            spriteBatch.Draw(Player1.originSheet.LoadFrame(GraphicsDevice, 1), Player1.playerPosition, Player1.originSheet.sheetPosition, Color.White);
             spriteBatch.End();
 
         }

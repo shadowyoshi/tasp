@@ -31,20 +31,24 @@ namespace TASP
         private int hitboxWidth;
         private int hitboxHeight;
 
+        private float velocityX = 0;
+        private float velocityY = 0;
+
         public Rectangle rectangle = new Rectangle(0, 0, 32, 32);
 
-        public Player(Texture2D __originSheet, Vector2 __playerPosition)
+        public Player(Spritesheet __originSheet, Vector2 __playerPosition)
         {
 
-            __originSheet    = playerSprite;
-            __playerPosition = playerPosition;
+            originSheet    = __originSheet;
+            playerPosition = __playerPosition;
 
         }
 
         public Texture2D Draw(GraphicsDevice graphicsDevice)
         {
 
-            playerSprite = SERVICES.LoadFromFile("C:\\Users\\Joey\\Documents\\GitHub\\tasp\\The All-Stars Project\\The All-Stars Project\\The All-Stars Project\\smb3-goomba.png", graphicsDevice);
+            originSheet  = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice), 0, 0);
+            playerSprite = new Texture2D(graphicsDevice, 16, 16);
 
             return playerSprite;
 
@@ -53,24 +57,26 @@ namespace TASP
         public void Update() 
         {
 
+            playerVelocity = new Vector2(velocityX, velocityY);
+            
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
             {
 
-                playerVelocity = new Vector2(-1, 0);
+                velocityX = -1;
 
             }
 
             else if (Keyboard.GetState().IsKeyDown(Keys.Right) == true)
             {
 
-                playerVelocity = new Vector2(1, 0);
+                velocityX = 1;
 
             }
 
             else
             {
 
-                playerVelocity = Vector2.Zero;
+                velocityX = 0;
 
             }
 

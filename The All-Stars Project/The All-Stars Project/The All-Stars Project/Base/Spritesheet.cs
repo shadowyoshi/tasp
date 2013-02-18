@@ -20,29 +20,60 @@ namespace TASP.Base
     class Spritesheet
     {
 
-        private Texture2D image;
-        private string    path;
+        private Texture2D   originImage;
+        private Texture2D[] frames;
         
         private int startX; // Starting X position
         private int startY; // Starting Y position
 
-        private Rectangle sheetPosition = new Rectangle();
+        public Rectangle sheetPosition = new Rectangle();
 
-        public Spritesheet(Texture2D __image, string __path, int __startX, int __startY)
+        public Spritesheet(Texture2D __originImage, int __startX, int __startY)
         {
-            
-            path   = __path;
-            startX = __startX;
-            startY = __startY;
+
+            originImage = __originImage;
+            startX      = __startX;
+            startY      = __startY;
 
         }
 
-        //public Texture2D Draw(GraphicsDevice graphicsDevice)
-        //{
+        public Texture2D LoadFrame(GraphicsDevice graphicsDevice, int id)
+        {
 
-        //    //
+            switch (id)
+            {
 
-        //}
+                case 1:
+                    
+                    sheetPosition.Width  = 16;
+                    sheetPosition.Height = 16;
+                    sheetPosition.X      = 0;
+                    sheetPosition.Y      = 0;
+
+                    break;
+
+                case 2:
+                    
+                    sheetPosition.Width  = 16;
+                    sheetPosition.Height = 16;
+                    sheetPosition.X      = 16;
+                    sheetPosition.Y      = 0;
+
+                    break;
+
+                default:
+
+                    break;
+
+            }
+            
+            Texture2D frame = new Texture2D(graphicsDevice, sheetPosition.Width, sheetPosition.Height);
+
+            frame = SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice);
+
+            return frame;
+
+        }
 
     }
 
