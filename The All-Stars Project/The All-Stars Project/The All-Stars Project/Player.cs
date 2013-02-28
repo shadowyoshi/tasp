@@ -20,18 +20,26 @@ namespace TASP
     class Player
     {
 
-        //public enum Player
-        //{
+        public enum playerState
+        {
 
-        //    Mario
+            normalLeft,
+            normalRight,
+            normalLeftWalking,
+            normalRightWalking
 
-        //}
+        }
         
         public Spritesheet originSheet;
         
         public Texture2D playerSprite;
         public Vector2   playerPosition;
         public Vector2   playerVelocity;
+
+        public bool moving;
+
+        private GraphicsDevice graphicsDevice;
+        private SpriteBatch spriteBatch;
         
         private int spriteWidth;
         private int spriteHeight;
@@ -41,35 +49,59 @@ namespace TASP
         private float velocityX = 0;
         private float velocityY = 0;
 
-        public Rectangle rectangle = new Rectangle(0, 0, 32, 32);
-
-        public Player(Spritesheet __originSheet, Vector2 __playerPosition)
+        public Player(GraphicsDevice __graphicsDevice)
         {
 
-            originSheet    = __originSheet;
-            playerPosition = __playerPosition;
+            graphicsDevice = __graphicsDevice;
+
+            spriteBatch    = new SpriteBatch(graphicsDevice);
+            originSheet    = new Spritesheet(SERVICES.LoadImageFromFile("F:\\bg.png", graphicsDevice));
+            playerPosition = new Vector2();
 
         }
 
-        public Texture2D Draw(GraphicsDevice graphicsDevice)
+        public void Draw(int id)
         {
 
-            originSheet  = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice));
-            playerSprite = new Texture2D(graphicsDevice, 16, 16);
+            if (id == 2)
+            {
 
-            return playerSprite;
+                originSheet.sheetPosition.Width  = 16;
+                originSheet.sheetPosition.Height = 16;
+                originSheet.sheetPosition.X      = 340;
+                originSheet.sheetPosition.Y      = 340;
+
+            }
+
+            else
+            {
+
+                originSheet.sheetPosition.Width  = 16;
+                originSheet.sheetPosition.Height = 16;
+                originSheet.sheetPosition.X      = 0;
+                originSheet.sheetPosition.Y      = 0;
+
+            }
+            
+            playerSprite = originSheet.LoadFrame(graphicsDevice, originSheet.sheetPosition.Width, originSheet.sheetPosition.Height);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(playerSprite, playerPosition, originSheet.sheetPosition, Color.White);
+            spriteBatch.End();
 
         }
 
         public void Update() 
         {
-
+            
             playerVelocity = new Vector2(velocityX, velocityY);
             
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
             {
 
                 velocityX = -1;
+
+                moving = true;
 
             }
 
@@ -78,12 +110,16 @@ namespace TASP
 
                 velocityX = 1;
 
+                moving = true;
+
             }
 
             else
             {
 
                 velocityX = 0;
+
+                moving = false;
 
             }
 

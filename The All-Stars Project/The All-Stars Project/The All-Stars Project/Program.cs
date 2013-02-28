@@ -27,9 +27,6 @@ namespace TASP
 
         public GraphicsDeviceManager graphics;
         public SpriteBatch           spriteBatch;
-        public Stream                stream;
-
-        public static Vector2 vector = new Vector2();
 
         private Player Player1;
 
@@ -50,9 +47,7 @@ namespace TASP
 
             base.Initialize();
 
-            Spritesheet Player1Sprite = new Spritesheet(SERVICES.LoadFromFile("F:\\bg.png", GraphicsDevice));
-
-            Player1 = new Player(Player1Sprite, vector);
+            Player1 = new Player(GraphicsDevice);
 
         }
 
@@ -92,10 +87,14 @@ namespace TASP
 
             base.Draw(gameTime);
 
-            spriteBatch.Begin();
-            //spriteBatch.Draw(Player1.Draw(GraphicsDevice), Player1.playerPosition, Color.White);
-            spriteBatch.Draw(Player1.originSheet.LoadFrame(GraphicsDevice, 1), Player1.playerPosition, Player1.originSheet.sheetPosition, Color.White);
-            spriteBatch.End();
+            Player1.Draw(1);
+
+            if (Player1.moving == true)
+            {
+
+                Player1.Draw(2);
+
+            }
 
         }
 

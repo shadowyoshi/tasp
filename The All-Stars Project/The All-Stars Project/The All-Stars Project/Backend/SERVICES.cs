@@ -19,9 +19,9 @@ namespace TASP.Backend
     
     class SERVICES
     {
-
+        
         /* LoadFromFile is a shortcut for loading an image from a file (thanks Celarix). */
-        public static Texture2D LoadFromFile(string path, GraphicsDevice graphicsDevice)
+        public static Texture2D LoadImageFromFile(string path, GraphicsDevice graphicsDevice)
         {
 
             if (!path.EndsWith(".png")) throw new ArgumentException(path + " is not a PNG image file. Please convert or remake the image using an image editor such as Paint.NET.");

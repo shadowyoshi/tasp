@@ -32,39 +32,12 @@ namespace TASP.Base
 
         }
 
-        public Texture2D LoadFrame(GraphicsDevice graphicsDevice, int id)
+        public Texture2D LoadFrame(GraphicsDevice graphicsDevice, int width, int height)
         {
-
-            switch (id)
-            {
-
-                case 1:
-                    
-                    sheetPosition.Width  = 16;
-                    sheetPosition.Height = 16;
-                    sheetPosition.X      = 0;
-                    sheetPosition.Y      = 0;
-
-                    break;
-
-                case 2:
-                    
-                    sheetPosition.Width  = 16;
-                    sheetPosition.Height = 16;
-                    sheetPosition.X      = 16;
-                    sheetPosition.Y      = 0;
-
-                    break;
-
-                default:
-
-                    break;
-
-            }
             
-            Texture2D frame = new Texture2D(graphicsDevice, sheetPosition.Width, sheetPosition.Height);
+            Texture2D frame = new Texture2D(graphicsDevice, width, height);
 
-            frame = SERVICES.LoadFromFile("F:\\bg.png", graphicsDevice);
+            frame = SERVICES.LoadImageFromFile("F:\\bg.png", graphicsDevice);
 
             return frame;
 
